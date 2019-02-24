@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>Company Details</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <input matInput placeholder="Company Name" [(ngModel)]="data.name">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="City" [(ngModel)]="data.address.city">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Zip Code" [(ngModel)]="data.address.zipCode">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Country" [(ngModel)]="data.address.country">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No changes</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok, save changes</button> 
+</div>

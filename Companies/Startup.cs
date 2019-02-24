@@ -44,7 +44,12 @@ namespace Companies
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
+            //we should review if we could get a whitelist for this
+            app.UseCors(
+                options => options.AllowAnyOrigin().AllowAnyHeader()
+                                               .AllowAnyMethod()
+                                               .AllowCredentials()
+            );
             app.UseHttpsRedirection();
             app.UseMvc();
         }

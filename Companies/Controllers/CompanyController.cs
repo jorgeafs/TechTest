@@ -20,12 +20,14 @@ namespace Companies.Controllers
             //It creates a new collection if the collections is empty, no empty view
             if(this.context.Companies.Count() == 0) 
             {
-                this.context.Addresses.Add(new Address{ZipCode="Some code", Country ="EEUU", City="Mills Run" });
-                this.context.Addresses.Add(new Address{ZipCode="Some code1", Country ="EEUU", City="Mills Run" });
-                this.context.Addresses.Add(new Address{ZipCode="Some code2", Country ="EEUU", City="Mills Run" });
-                this.context.Companies.Add(new Company { Name = "Weyland-Yutani", Address = this.context.Addresses.Find((long)1) });
-                this.context.Companies.Add(new Company { Name = "Jeb Kerman's furniture", Address = this.context.Addresses.Find((long)2)});
-                this.context.Companies.Add(new Company { Name = "The Boring Company", Address = this.context.Addresses.Find((long)3)});
+                Address startingAddress = new Address{ZipCode="PA 15464", Country ="EEUU", City="Mills Run" };
+                this.context.Addresses.Add(startingAddress);
+                long index = startingAddress.ID;
+                this.context.Addresses.Add(new Address{ZipCode="8 Chome-16-10", Country ="Japan", City="Ginza, Chūō-ku" });
+                this.context.Addresses.Add(new Address{ZipCode="WA 98052", Country ="EEUU", City="Redmond" });
+                this.context.Companies.Add(new Company { Name = "Weyland-Yutani", Address = this.context.Addresses.Find((long)index++) });
+                this.context.Companies.Add(new Company { Name = "Jeb Kerman's furniture", Address = this.context.Addresses.Find((long)index++)});
+                this.context.Companies.Add(new Company { Name = "The Boring Company", Address = this.context.Addresses.Find((long)index)});
                 this.context.SaveChanges();
             }
         }
